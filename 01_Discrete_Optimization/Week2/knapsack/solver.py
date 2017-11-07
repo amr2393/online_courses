@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from collections import namedtuple
-from greedy_solvers import greedy_solver_1
+from greedy_solvers import greedy_solver_1, greedy_solver_2
 Item = namedtuple("Item", ['index', 'value', 'weight'])
 
 def solve_it(input_data):
@@ -22,7 +22,8 @@ def solve_it(input_data):
         parts = line.split()
         items.append(Item(i-1, int(parts[0]), int(parts[1])))
 
-    value, taken = greedy_solver_1(items, capacity)
+    #value, taken = greedy_solver_1(items, capacity)
+    value, taken = greedy_solver_2(items, capacity)
     
     # prepare the solution in the specified output format
     output_data = str(value) + ' ' + str(0) + '\n'
