@@ -2,7 +2,7 @@ import numpy as np
 
 def build_cost_matrix(items, capacity):
 
-    cost = np.zeros((capacity+1, len(items)+1))
+    cost = np.zeros((capacity+1, len(items)+1), dtype = int)
 
     for item_ix in range(1, len(items)+1):
         for capacity_ix in range(1, capacity+1):
