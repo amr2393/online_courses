@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 from collections import namedtuple
-from greedy_solvers import greedy_solver_1, greedy_solver_2
-Item = namedtuple("Item", ['index', 'value', 'weight'])
+from greedy_solvers import *
+Item = namedtuple("Item", ['index', 'value', 'weight', 'value_density'])
 
 def solve_it(input_data):
     # Modify this code to run your optimization algorithm
@@ -20,11 +20,13 @@ def solve_it(input_data):
     for i in range(1, item_count+1):
         line = lines[i]
         parts = line.split()
-        items.append(Item(i-1, int(parts[0]), int(parts[1])))
+        items.append(Item(i-1, int(parts[0]), int(parts[1]), float(parts[0]) / float(parts[1])))
 
     #value, taken = greedy_solver_1(items, capacity)
-    value, taken = greedy_solver_2(items, capacity)
-    
+    #value, taken = greedy_solver_2(items, capacity)
+    #value, taken = greedy_solver_3(items, capacity)
+    value, taken = greedy_solver_4(items, capacity)
+
     # prepare the solution in the specified output format
     output_data = str(value) + ' ' + str(0) + '\n'
     output_data += ' '.join(map(str, taken))
