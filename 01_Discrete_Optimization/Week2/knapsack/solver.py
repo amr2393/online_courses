@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from collections import namedtuple
+from greedy_solvers import greedy_solver_1
 Item = namedtuple("Item", ['index', 'value', 'weight'])
 
 def solve_it(input_data):
@@ -21,17 +22,7 @@ def solve_it(input_data):
         parts = line.split()
         items.append(Item(i-1, int(parts[0]), int(parts[1])))
 
-    # a trivial greedy algorithm for filling the knapsack
-    # it takes items in-order until the knapsack is full
-    value = 0
-    weight = 0
-    taken = [0]*len(items)
-
-    for item in items:
-        if weight + item.weight <= capacity:
-            taken[item.index] = 1
-            value += item.value
-            weight += item.weight
+    value, taken = greedy_solver_1(items, capacity)
     
     # prepare the solution in the specified output format
     output_data = str(value) + ' ' + str(0) + '\n'
