@@ -26,8 +26,8 @@ def solve_it(input_data):
     #value, taken = greedy_solver_1(items, capacity)
     #value, taken = greedy_solver_2(items, capacity)
     #value, taken = greedy_solver_3(items, capacity)
-    
-    if item_count*capacity > 10000:
+    print(item_count*capacity)
+    if item_count*capacity > 100000000:
         value, taken = greedy_solver_4(items, capacity)
     else:
         value, taken = dp_optimizer(items, capacity)
