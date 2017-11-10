@@ -4,6 +4,7 @@
 from collections import namedtuple
 from greedy_solvers import *
 from dynamic_programming import dp_optimizer
+from depth_first_search import depth_search
 Item = namedtuple("Item", ['index', 'value', 'weight', 'value_density'])
 
 def solve_it(input_data):
@@ -26,11 +27,12 @@ def solve_it(input_data):
     #value, taken = greedy_solver_1(items, capacity)
     #value, taken = greedy_solver_2(items, capacity)
     #value, taken = greedy_solver_3(items, capacity)
-    print(item_count*capacity)
-    if item_count*capacity > 100000000:
-        value, taken = greedy_solver_4(items, capacity)
-    else:
-        value, taken = dp_optimizer(items, capacity)
+    # print(item_count*capacity)
+    # if item_count*capacity > 100000000:
+    #     value, taken = greedy_solver_4(items, capacity)
+    # else:
+    #     value, taken = dp_optimizer(items, capacity)
+    taken, value, _ = depth_search(items, capacity)
 
     # prepare the solution in the specified output format
     output_data = str(value) + ' ' + str(0) + '\n'
